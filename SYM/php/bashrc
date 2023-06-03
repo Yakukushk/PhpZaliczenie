@@ -1,0 +1,17 @@
+
+alias ..="cd .."
+alias ..2="cd ../.."
+alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
+alias ..5="cd ../../../../.."
+
+alias mg2upgrade='php bin/magento setup:upgrade'
+
+genStaticTempFunc() {
+    php bin/magento setup:static-content:deploy $@;
+}
+alias mg2static="genStaticTempFunc"
+alias mg2clearstatic="rm -rf pub/static/*"
+alias mg2clearvar="rm -rf var/generation/* var/page_cache/* var/cache/*"
+alias mg2snoopdog="cd vendor/snowdog/frontools && gulp styles && ..3"
+alias mg2re="mg2clearstatic ; mg2clearvar ; mg2upgrade ; mg2static"

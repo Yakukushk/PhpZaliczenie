@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+  apache:
+    build: apache
+    ports:
+      - "8095:80"
+      - "80:80"
+    links:
+      - php_81
+      - mailhog
+    volumes:
+      - ./projects:/var/www
+      - ./apache/conf:/usr/local/apache2/conf/overwrite
+    working_dir: "/var/www"
+
+  php_81:
+    build: php_81
+    links:
+      - db
+      - mailhog
+    volumes:
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php-override.ini
+#      - "${SSH_AUTH_SOCK}:/ssh-agent"
+      - ./php/bin/mhsendmail:/usr/local/bin/mhsendmail
+      - ./projects:/var/www
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
+    working_dir: /var/www
+
+  
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db:/var/lib/mysql
+      - ./DB_DUMP:/var/www/DB
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - "33075:3306"
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8888:80"
+    environment:
+      PMA_HOST: db
+
