@@ -32,15 +32,23 @@
         </div>
     </nav>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
+    {{ form_start(registrationForm, {'attr': {'class': 'my-form-class'}}) }}
+    <div class="mb-3">
+        <label for="{{ registrationForm.email.vars.id }}" class="form-label">Email address</label>
+        {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter your email'}}) }}
+    </div>
+    <div class="mb-3">
+        <label for="{{ registrationForm.plainPassword.vars.id }}" class="form-label">Password</label>
+        {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder': 'Enter your password'}}) }}
+    </div>
+    <div class="mb-3 form-check">
+        {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+        <label class="form-check-label" for="{{ registrationForm.agreeTerms.vars.id }}">I agree to the terms</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
     {{ form_end(registrationForm) }}
+
+
 {% endblock %}
 {% block javascripts %}
     {{ parent() }}
