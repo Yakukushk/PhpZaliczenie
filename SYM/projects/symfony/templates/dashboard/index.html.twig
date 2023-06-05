@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/bootstrap.ea80d697.css') }}">
+{% endblock %}
+
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
@@ -13,10 +18,16 @@
     <h1>Hello {{ app.user.email }}! ✅</h1>
 
     This friendly message is coming from:
-    <ul class="nav">
-        <li class="nav-item">Your controller at <code><a href="{{ '/var/www/symfony/src/Controller/DashboardController.php'|file_link(0) }}">src/Controller/DashboardController.php</a></code></li>
-        <li class="nav-item">Your template at <code><a href="{{ '/var/www/symfony/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
-        <li class="nav-item"><code><a href="{{ app.user ?  'logout' : 'login' }}">Log Out</a></code></li>
+    <ul class="list-group list-group-flush mt-2">
+        <li class="list-group-item">Your controller at <code><a href="{{ '/var/www/symfony/src/Controller/DashboardController.php'|file_link(0) }}">src/Controller/DashboardController.php</a></code></li>
+        <li class="list-group-item">Your template at <code><a href="{{ '/var/www/symfony/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
+        <li class="list-group-item"><code><a href="{{ app.user ?  'logout' : 'login' }}">Log Out</a></code></li>
+
+
     </ul>
 </div>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/bootstrap.db90759b.js') }}"></script>
 {% endblock %}

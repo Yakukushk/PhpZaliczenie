@@ -1,20 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Register{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/bootstrap.ea80d697.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
-    <div class="container">
-        <div class="nav">
-            <ul class="nav-item">
-                <li class="nav-link active"><a href="{{ 'register' }}">Register</a> </li>
-                <li class="nav-link"><a href="{{ "login" }}">Login</a> </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PhpZaleczenie</a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ 'register' }}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ 'login' }}">Login</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-
-
-        </ul>
-    </div>
+    </nav>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
@@ -25,4 +41,8 @@
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/bootstrap.db90759b.js') }}"></script>
 {% endblock %}
