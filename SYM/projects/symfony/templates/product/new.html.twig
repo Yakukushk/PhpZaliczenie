@@ -1,0 +1,21 @@
+{# templates/product/new.html.twig #}
+
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/bootstrap.ea80d697.css') }}">
+{% endblock %}
+{% block body %}
+    <h1>Создать новый продукт</h1>
+
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.description) }}
+    {{ form_row(form.save) }}
+    {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/bootstrap.db90759b.js') }}"></script>
+{% endblock %}
