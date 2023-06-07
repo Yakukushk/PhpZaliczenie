@@ -8,21 +8,46 @@
 {% block title %}Hello DashboardController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">PhpZaleczenie</a>
+            <button class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{{ 'dashboard' }}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('product_list') }}">Product</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Log Out</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
 <div class="example-wrapper">
     <h1>Welcome Panel for Users</h1>
-    <h1>Hello {{ app.user.email }}! ✅</h1>
+    <h1>Hello, {{ app.user.email }}! ✅</h1>
 
-    This friendly message is coming from:
+    Your components:
     <ul class="list-group list-group-flush mt-2">
-        <li class="list-group-item">Your controller at <code><a href="{{ '/var/www/symfony/src/Controller/DashboardController.php'|file_link(0) }}">src/Controller/DashboardController.php</a></code></li>
-        <li class="list-group-item">Your template at <code><a href="{{ '/var/www/symfony/templates/dashboard/index.html.twig'|file_link(0) }}">templates/dashboard/index.html.twig</a></code></li>
+        <li class="list-group-item"><code><a href="{{ path('product_list') }}">Product</a></code></li>
         <li class="list-group-item"><code><a href="{{ app.user ?  'logout' : 'login' }}">Log Out</a></code></li>
-
 
     </ul>
 </div>
