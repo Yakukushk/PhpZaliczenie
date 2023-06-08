@@ -6,13 +6,21 @@
     <link rel="stylesheet" href="{{ asset('build/bootstrap.ea80d697.css') }}">
 {% endblock %}
 {% block body %}
-    <h1>Создать новый продукт</h1>
+    <h1>List of Product</h1>
 
     {{ form_start(form) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.price) }}
-    {{ form_row(form.description) }}
-    {{ form_row(form.save) }}
+    <div class="mb-3">
+    {{ form_row(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Enter your name'}}) }}
+    </div>
+    <div class="mb-3">
+    {{ form_row(form.price, {'attr': {'class': 'form-control', 'placeholder': 'Enter your price'}}) }}
+    </div>
+    <div class="mb-3">
+    {{ form_row(form.description, {'attr': {'class': 'form-control', 'placeholder': 'Enter your description'}}) }}
+    </div>
+    <div class="mb-3">
+    {{ form_row(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+    <div class="mb-3">
     {{ form_end(form) }}
 {% endblock %}
 {% block javascripts %}

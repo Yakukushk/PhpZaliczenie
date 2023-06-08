@@ -1,0 +1,35 @@
+
+
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('build/bootstrap.ea80d697.css') }}">
+{% endblock %}
+
+    {% block body %}
+        <h1>Submit Request</h1>
+
+        {{ form_start(form) }}
+<div class="mb-3">
+        {{ form_row(form.name, {'attr': {'class': 'form-control', 'placeholder': 'Enter your name'}}) }}
+</div>
+<div class="mb-3">
+        {{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Enter your email'}}) }}
+</div>
+<div class="mb-3">
+
+        {{ form_row(form.subject, {'attr': {'class': 'form-control', 'placeholder': 'Enter your subject'}}) }}
+</div>
+<div class="mb-3">
+        {{ form_row(form.message, {'attr': {'class': 'form-control', 'placeholder': 'Enter your report'}}) }}
+</div>
+<div class="mb-3">
+        {{ form_row(form.submitForm, {'attr': {'class': 'btn btn-primary'}}) }}
+</div>
+        {{ form_end(form) }}
+    {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('build/bootstrap.db90759b.js') }}"></script>
+{% endblock %}

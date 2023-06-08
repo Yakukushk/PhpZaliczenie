@@ -15,11 +15,12 @@
     <h1>Dashboard</h1>
 
 
-    <table>
+    <table class="table">
         <thead>
         <tr>
-            <th>Email</th>
-            <th>Password</th>
+            <th scope="col">ID</th>
+            <th scope="col">Email</th>
+            <th scope="col">Password</th>
             {# Add additional user fields/columns here #}
         </tr>
         </thead>
@@ -28,6 +29,7 @@
 
         {% for user in users %}
             <tr>
+                <th scope="row">{{ user.id }}</th>
                 <td>{{ user.email }}</td>
                <td>{{ user.password }}</td></li>
 

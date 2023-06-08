@@ -16,4 +16,7 @@ create_product:
     path: /product/new
     controller: App\Controller\ProductController::createProduct
     methods: [GET, POST]
-
+app_request:
+    path: /request
+    controller: App\Controller\RequestController::submitRequest
+    methods: [GET, POST]
