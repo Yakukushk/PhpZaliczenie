@@ -27,6 +27,20 @@
                 <td>{{ request.subject }}</td>
                 <td>{{ request.message }}</td>
                 <td>{{ request.createdAt }}</td>
+                <td>
+                    {% if app.user.email == 'admin@mail.com' %}
+                        <form action="{{ path('request_update_status', {'id': request.id}) }}" method="POST">
+                            <select name="status">
+                                <option value="Pending" {% if request.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                <option value="In Progress" {% if request.status == 'In Progress' %}selected{% endif %}>In Progress</option>
+                                <option value="Completed" {% if request.status == 'Completed' %}selected{% endif %}>Completed</option>
+                            </select>
+                            <button class="btn btn-info" type="submit">Update</button>
+                        </form>
+                    {% else %}
+                        {{ request.status }}
+                    {% endif %}
+                </td>
             </tr>
         {% endfor %}
         </tbody>

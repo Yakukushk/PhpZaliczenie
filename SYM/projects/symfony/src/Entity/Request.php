@@ -6,6 +6,7 @@ use App\Repository\RequestRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use DateTimeImmutable;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: RequestRepository::class)]
 class Request
@@ -29,6 +30,12 @@ class Request
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
+    private ?UserInterface $user = null;
+    #[ORM\Column(length: 255)]
+    private ?string $status = 'Pending';
 
     public function getId(): ?int
     {
@@ -98,4 +105,27 @@ class Request
 
         return $this;
     }
+
+    public function getUser(): ?UserInterface
+    {
+        return $this->user;
+    }
+    public function setUser(?UserInterface $user): self
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
 }

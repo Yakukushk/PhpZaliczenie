@@ -20,3 +20,7 @@ app_request:
     path: /request
     controller: App\Controller\RequestController::submitRequest
     methods: [GET, POST]
+my_requests:
+    path: /request/my-requests
+    controller: App\Controller\RequestController::showMyRequests
+
