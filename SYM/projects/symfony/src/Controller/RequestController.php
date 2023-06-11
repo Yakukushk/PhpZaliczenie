@@ -14,6 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use App\Form\CommentType;
 
 
 class RequestController extends AbstractController
@@ -90,6 +91,7 @@ public function showMyRequests(RequestRepository $requestRepository): Response{
         }
 
         $status = $httpRequest->request->get('status');
+        $comment = $httpRequest->request->get('comment');
         $requestEntity = $this->requestRepository->find($id);
 
         if (!$requestEntity) {
@@ -97,10 +99,13 @@ public function showMyRequests(RequestRepository $requestRepository): Response{
         }
 
         $requestEntity->setStatus($status);
+        $requestEntity->setComment($comment);
         $this->entityManager->flush();
 
         return $this->redirectToRoute('request_show');
+
     }
+
 
 
 

@@ -23,4 +23,7 @@ app_request:
 my_requests:
     path: /request/my-requests
     controller: App\Controller\RequestController::showMyRequests
-
+request_send_response:
+    path: '/request/{id}/send-response'
+    controller: App\Controller\RequestController::sendResponse
+    methods: POST

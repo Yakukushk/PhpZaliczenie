@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RequestRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 use DateTimeImmutable;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -36,6 +37,8 @@ class Request
     private ?UserInterface $user = null;
     #[ORM\Column(length: 255)]
     private ?string $status = 'Pending';
+    #[ORM\Column(type: "text", nullable: true)]
+    private ?string $comment = null;
 
     public function getId(): ?int
     {
@@ -125,6 +128,16 @@ class Request
     {
         $this->status = $status;
 
+        return $this;
+    }
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): self
+    {
+        $this->comment = $comment;
         return $this;
     }
 

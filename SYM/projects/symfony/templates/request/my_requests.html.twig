@@ -22,6 +22,7 @@
                 <th scope="col">Subject</th>
                 <th scope="col">Message</th>
                 <th scope="col">Status</th>
+                <th scope="col">Comments</th>
 
 
 {#                <th>Статус</th>#}
@@ -36,6 +37,7 @@
                     <td>{{ request.subject }}</td>
                     <td>{{ request.message }}</td>
                     <td>{{ request.status }}</td>
+                    <td>{{ request.comment }}</td>
                 </tr>
             {% endfor %}
             </tbody>

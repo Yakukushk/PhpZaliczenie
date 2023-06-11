@@ -20,7 +20,6 @@
         <tbody>
         {% for request in requests %}
             <tr>
-
                 <th scope="row">{{ request.id }}</th>
                 <td>{{ request.name }}</td>
                 <td>{{ request.email }}</td>
@@ -35,10 +34,15 @@
                                 <option value="In Progress" {% if request.status == 'In Progress' %}selected{% endif %}>In Progress</option>
                                 <option value="Completed" {% if request.status == 'Completed' %}selected{% endif %}>Completed</option>
                             </select>
+                            <textarea name="comment" placeholder="Enter a comment"></textarea>
                             <button class="btn btn-info" type="submit">Update</button>
                         </form>
                     {% else %}
                         {{ request.status }}
+                    {% endif %}
+
+                    {% if request.getComment() %}
+                        <strong>Comment:</strong> {{ request.getComment() }} <br>
                     {% endif %}
                 </td>
             </tr>
